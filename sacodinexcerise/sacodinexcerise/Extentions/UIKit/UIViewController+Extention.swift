@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIViewController {
+     static var storyboardID: String {
+        return String(describing: self)
+    }
+}

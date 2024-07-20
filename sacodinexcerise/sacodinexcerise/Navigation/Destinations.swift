@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+public enum Destinations {
+    case login
+    case signup
+    case inspection
+}

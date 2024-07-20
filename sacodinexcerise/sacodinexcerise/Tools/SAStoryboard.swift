@@ -8,11 +8,12 @@
 import Foundation
 import UIKit
 
-enum SAStoryboard {
-    case authentication
-    case inspection
+struct SAStoryboard {
+    static var authentication: UIStoryboard {
+        UIStoryboard(name: "Authentication", bundle: nil)
+    }
     
-    func getViewController() {
-        
+    static var inspection: UIStoryboard {
+        UIStoryboard(name: "Inspection", bundle: nil)
     }
 }
