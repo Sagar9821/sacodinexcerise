@@ -9,6 +9,11 @@ import UIKit
 
 class QuestionAndAnswerViewController: UIViewController {
 
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

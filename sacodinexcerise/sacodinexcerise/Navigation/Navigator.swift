@@ -7,12 +7,13 @@
 
 import Foundation
 import UIKit
-public enum UserFlowEntryPoint {
-    case login
+
+enum UserFlowEntryPoint {
+    case onboading
     case inspections
 }
 
-public protocol NavigatorType {
+protocol NavigatorType {
     func startUserFlow(with entrypoint: UserFlowEntryPoint)
     func navigate(to destination: Destinations)
 }
@@ -28,21 +29,42 @@ class Navigator: NavigatorType {
     
     func startUserFlow(with entrypoint: UserFlowEntryPoint) {
         switch entrypoint {
-        case .login:
-            let loginVc = SAStoryboard.authentication.instantiateViewController(identifier: LoginViewController.storyboardID) { coder in
-                return LoginViewController(coder: coder)
+        case .onboading:
+            let onboardingVm: OnBoardingViewModel = OnBoardingViewModel(navigator: self)
+            let onboardingVc = SAStoryboard.authentication.instantiateViewController(identifier: OnboardingViewController.storyboardID) { coder in
+                return OnboardingViewController(coder: coder, viewModel: onboardingVm)
             }
-            navigationController.pushViewController(loginVc, animated: false)
+            navigationController.pushViewController(onboardingVc, animated: false)
+        
         case .inspections:
-            let inspectionsVc = SAStoryboard.authentication.instantiateViewController(identifier: LoginViewController.storyboardID) { coder in
-                return LoginViewController(coder: coder)
+            let inspectionsVc = SAStoryboard.inspection.instantiateViewController(identifier: QuestionAndAnswerViewController.storyboardID) { coder in
+                return QuestionAndAnswerViewController(coder: coder)
             }
             navigationController.pushViewController(inspectionsVc, animated: false)
+        
+            
         }
     }
     
     func navigate(to destination: Destinations) {
-       
+        switch destination {
+        case .login:
+            let loginVm: LoginViewModel = LoginViewModel(authenticationService: AuthenticationServices(webService: WebService(), persistentData: PersistentData()))
+            let loginVc = SAStoryboard.authentication.instantiateViewController(identifier: LoginViewController.storyboardID) { coder in
+                return LoginViewController(coder: coder,viewModel: loginVm)
+            }
+            navigationController.pushViewController(loginVc, animated: true)
+        case .signup:
+            let loginVc = SAStoryboard.authentication.instantiateViewController(identifier: LoginViewController.storyboardID) { coder in
+                return LoginViewController(coder: coder)
+            }
+            navigationController.pushViewController(loginVc, animated: true)
+        case .inspection:
+            let loginVc = SAStoryboard.authentication.instantiateViewController(identifier: LoginViewController.storyboardID) { coder in
+                return LoginViewController(coder: coder)
+            }
+            navigationController.pushViewController(loginVc, animated: true)
+        }
     }
     
 }
