@@ -45,9 +45,13 @@ class InspectionListViewController: UIViewController {
         } receiveValue: { [weak self] inspection in
             self?.inspectionListTableView.reloadData()
         }.store(in: &cancellable)
-        viewModel.loadInspections()
+        //viewModel.loadInspections()
     }
    
+    // MARK: - Action Methods
+    @IBAction private func didTapOnNewInspection() {
+        viewModel.moveToInspectionDetails()
+    }
 
 }
 // MARK: - Table View Datasource & Delegates

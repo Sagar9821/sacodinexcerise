@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - InspectionResponse
 struct InspectionResponse: Codable {
-    let inspection: Inspection
+    var inspection: Inspection
 }
 
 // MARK: - Inspection
@@ -17,7 +17,7 @@ struct Inspection: Codable {
     let area: Area
     let id: Int
     let inspectionType: InspectionType
-    let survey: Survey
+    var survey: Survey
 }
 
 // MARK: - Area
@@ -34,25 +34,41 @@ struct InspectionType: Codable {
 }
 
 // MARK: - Survey
-struct Survey: Codable {
-    let categories: [Category]
+struct Survey: Codable, Hashable, Equatable {
+    static func == (lhs: Survey, rhs: Survey) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    var categories: [Category]
     let id: Int
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 // MARK: - Category
-struct Category: Codable {
+struct Category: Codable, Hashable, Identifiable, Equatable {
     let id: Int
     let name: String
-    let questions: [Question]
+    var questions: [Question]
 }
 
 // MARK: - Question
-struct Question: Codable {
+struct Question: Codable, Identifiable, Hashable {
+    static func == (lhs: Question, rhs: Question) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     let answerChoices: [AnswerChoice]
     let id: Int
     let name: String
-    let selectedAnswerChoiceID: String?
-
+    var selectedAnswerChoiceID: String?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     enum CodingKeys: String, CodingKey {
         case answerChoices, id, name
         case selectedAnswerChoiceID = "selectedAnswerChoiceId"
@@ -60,7 +76,7 @@ struct Question: Codable {
 }
 
 // MARK: - AnswerChoice
-struct AnswerChoice: Codable {
+struct AnswerChoice: Codable, Identifiable {
     let id: Int
     let name: String
     let score: Double

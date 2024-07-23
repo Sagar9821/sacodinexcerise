@@ -159,7 +159,8 @@ extension WebService {
     /// - Returns: Readable NetworkRequestError
     private func handleError(_ error: Error) -> NetworkRequestError {
         switch error {
-        case is Swift.DecodingError:
+        case let error as DecodingError :
+            handleDecodingError(error)
             return .decodingError
         case let urlError as URLError:
             return .urlSessionFailed(urlError)
@@ -167,6 +168,25 @@ extension WebService {
             return error
         default:
             return .unknownError
+        }
+    }
+    
+    func handleDecodingError(_ error: DecodingError) {
+        switch error {
+        case .typeMismatch(let type, let context):
+            print("Type '\(type)' mismatch:", context.debugDescription)
+            print("CodingPath:", context.codingPath)
+        case .valueNotFound(let type, let context):
+            print("Value '\(type)' not found:", context.debugDescription)
+            print("CodingPath:", context.codingPath)
+        case .keyNotFound(let key, let context):
+            print("Key '\(key)' not found:", context.debugDescription)
+            print("CodingPath:", context.codingPath)
+        case .dataCorrupted(let context):
+            print("Data corrupted:", context.debugDescription)
+            print("CodingPath:", context.codingPath)
+        @unknown default:
+            print("Unknown decoding error")
         }
     }
 }

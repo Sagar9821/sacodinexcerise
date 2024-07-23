@@ -71,6 +71,8 @@ class Navigator: NavigatorType {
             let inspectionNavigator: InspectionNavigator = InspectionNavigator(rootNavigator: self)
             childNavigator.append(inspectionNavigator)            
             inspectionNavigator.start()
+        case .inspectionQuestions:
+            break;
         }
     }
     

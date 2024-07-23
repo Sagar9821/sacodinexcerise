@@ -14,6 +14,8 @@ protocol InspectionListViewModelType {
 
     func numberOfInspections() -> Int
     func inspectionAt( _ index: Int) -> Inspection
+    
+    func moveToInspectionDetails()
 }
 
 class InspectionListViewModel: InspectionListViewModelType {
@@ -56,5 +58,11 @@ extension InspectionListViewModel {
     
     func inspectionAt( _ index: Int) -> Inspection {
         return arrayInspections[index]
+    }
+}
+
+extension InspectionListViewModel {
+    func moveToInspectionDetails() {
+        navigator.navigate(to: .inspectionQuestions)
     }
 }

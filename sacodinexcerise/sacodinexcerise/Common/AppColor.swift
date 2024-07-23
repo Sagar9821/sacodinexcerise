@@ -12,4 +12,8 @@ struct AppColor {
     struct Text {
         static var oceanBlue: UIColor = UIColor(named: "oceanBlue")!
     }
+    
+    struct Backgrounds {
+        static var lightGray: UIColor = UIColor(named: "lightGray")!
+    }
 }

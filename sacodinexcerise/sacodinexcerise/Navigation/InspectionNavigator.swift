@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class InspectionNavigator: ChildNavigator {
     
@@ -16,26 +17,26 @@ class InspectionNavigator: ChildNavigator {
     }
     
     func start() {
-        rootNavigator.navigationController.isNavigationBarHidden = true
-        rootNavigator.navigationController.pushViewController(rootTabView(), animated: false)
-    }
-    func navigate(to destination: Destinations) {
-        switch destination {
-        case .inspection:
-            break;
-        default:
-            fatalError()
-        }
-    }
-    
-    func rootTabView() -> InspectionRootTabViewController {
-     
+        
         let inspectionListViewModel: InspectionListViewModel = InspectionListViewModel(inspectionService: InspectionService(webservice: WebService()), navigator: self)
         let inspectionsVc = SAStoryboard.inspection.instantiateViewController(identifier: InspectionListViewController.storyboardID) { coder in
             return InspectionListViewController(coder: coder,viewModel: inspectionListViewModel)
         }
         
-        let inspectionRootTabVc = InspectionRootTabViewController(inspectionListViewController: inspectionsVc)
-        return inspectionRootTabVc
+        rootNavigator.navigationController.pushViewController(inspectionsVc, animated: false)
     }
+    func navigate(to destination: Destinations) {
+        switch destination {
+        case .inspectionQuestions:
+            let inspectionQAView = InspectionQuestionsDetailsView(viewModel: InspectioQuestionDetailsViewModel(inspectionService: InspectionService(webservice: WebService()), inspectionNavigator: self))
+            let inspectionQaVc = UIHostingController(rootView: inspectionQAView)
+            self.rootNavigator.navigationController.pushViewController(inspectionQaVc, animated: true)
+        case .inspection:
+            rootNavigator.navigationController.popViewController(animated: true)
+        default:
+            fatalError()
+        }
+    }
+    
+
 }
