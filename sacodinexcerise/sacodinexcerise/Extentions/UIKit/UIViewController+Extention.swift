@@ -32,4 +32,12 @@ extension UIViewController {
         
         self.title = title
     }
+    
+    func showNetworkError(_ error: NetworkRequestError) {
+        DispatchQueue.dispatchToMain {
+            let alertError: UIAlertController = UIAlertController(title: "Error", message: error.errorMessage ?? "Please try sometime.", preferredStyle: .alert)
+            alertError.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alertError, animated: true)
+        }
+    }
 }

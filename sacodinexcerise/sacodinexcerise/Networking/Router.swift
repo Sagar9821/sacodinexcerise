@@ -16,6 +16,7 @@ protocol RouterType {
 enum Router: RouterType {
     case login(AuthenticationResource)
     case register(AuthenticationResource)
+    case startInpection
 }
 
 extension Router {
@@ -25,6 +26,8 @@ extension Router {
             return "http://127.0.0.1:5001/api/login"
         case .register:
             return "http://127.0.0.1:5001/api/register"
+        case .startInpection:
+            return "http://127.0.0.1:5001/api/inspections/start"
         }
     }
 }
@@ -34,6 +37,8 @@ extension Router {
         switch self {
         case .login,.register:
             return .post
+        case .startInpection:
+            return .get
         }
     }
 }
@@ -43,6 +48,8 @@ extension Router {
         switch self {
         case .login(let authenticationResource),.register(let authenticationResource):
             return getParameters(authenticationResource)
+        case .startInpection:
+            return nil
         }
     }
     

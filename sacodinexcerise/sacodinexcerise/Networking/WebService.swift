@@ -24,26 +24,33 @@ struct WebService: WebServiceType {
     /// - Parameter request: URLRequest
     /// - Returns: A publisher with the provided decoded data or an error
     func dispatch<ReturnType: Codable>(_ type: ReturnType.Type, router: Router) -> AnyPublisher<ReturnType, NetworkRequestError> {
-        
-        guard let request = createRequest(router: router) else { return Fail(error: NetworkRequestError.invalidRequest).eraseToAnyPublisher() }
+            
+        guard let request = createRequest(router: router) else {
+            return Fail(error: NetworkRequestError.invalidRequest).eraseToAnyPublisher()
+        }
         
         return urlSession
             .dataTaskPublisher(for: request)
             .subscribe(on: DispatchQueue.global(qos: .default))
-            .tryMap({ data, response in
+            .tryMap { data, response in
                 
                 guard let response = response as? HTTPURLResponse else {
-                    throw httpError(0)
+                    throw NetworkRequestError.invalidRequest
                 }
                 
                 print("[\(response.statusCode)] '\(request.url!)'")
                 
-                if !(200...299).contains(response.statusCode) {
+                if response.statusCode == 401 {
+                    // Decode error model for status code 400
+                    let decoder = JSONDecoder()
+                    let errorModel = try decoder.decode(WebResponseError.self, from: data)
+                    throw NetworkRequestError.custome(errorModel)
+                } else if !(200...299).contains(response.statusCode) {
                     throw httpError(response.statusCode)
                 }
                 
                 return data
-            })
+            }
             .receive(on: DispatchQueue.main)
             .decode(type: type.self, decoder: JSONDecoder())
             .mapError { error in
@@ -51,7 +58,8 @@ struct WebService: WebServiceType {
             }
             .catch { error -> AnyPublisher<ReturnType, NetworkRequestError> in
                 // Handle empty data case
-                if error == .decodingError && type == Empty.self{
+                
+                if case .decodingError = error, type.self == Empty.self{
                     // Create an empty instance of T if possible, or handle as needed
                     let emptyResponse = Empty() // Assuming T has a default initializer
                     return Just(emptyResponse as! ReturnType)
@@ -80,7 +88,7 @@ struct WebService: WebServiceType {
 
 // MARK: - Error Handling
 
-enum NetworkRequestError: LocalizedError, Equatable {
+enum NetworkRequestError: LocalizedError {
     case invalidRequest
     case badRequest
     case unauthorized
@@ -93,6 +101,40 @@ enum NetworkRequestError: LocalizedError, Equatable {
     case urlSessionFailed(_ error: URLError)
     case timeOut
     case unknownError
+    case custome( _ error: WebResponseError)
+}
+
+extension NetworkRequestError {
+    var errorMessage: String? {
+        switch self {
+        case .invalidRequest:
+            return "Please try after sometime"
+        case .badRequest:
+            return "Please try after sometime"
+        case .unauthorized:
+            return "Please try after sometime"
+        case .forbidden:
+            return "Please try after sometime"
+        case .notFound:
+            return "Please try after sometime"
+        case .error4xx(let _):
+            return "Please try after sometime"
+        case .serverError:
+            return "Please try after sometime"
+        case .error5xx(let _):
+            return "Please try after sometime"
+        case .decodingError:
+            return "Please try after sometime"
+        case .urlSessionFailed(let _):
+            return "Please try after sometime"
+        case .timeOut:
+            return "Please try after sometime"
+        case .unknownError:
+            return "Please try after sometime"
+        case .custome(let responseError):
+            return responseError.error
+        }
+    }
 }
 
 extension WebService {

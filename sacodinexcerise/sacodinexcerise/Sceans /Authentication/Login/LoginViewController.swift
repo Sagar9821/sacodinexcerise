@@ -60,10 +60,10 @@ class LoginViewController: UIViewController {
         viewModel.loginResult
             .sink { [weak self] result in
                 switch result {
-                case .success(let authResource):
-                    print("Login successful: \(authResource)")
+                case .success:
+                    self?.viewModel.moveToInspections()
                 case .failure(let error):
-                    print("Login failed with error: \(error)")
+                    self?.showNetworkError(error)
                 }
             }
             .store(in: &cancellables)

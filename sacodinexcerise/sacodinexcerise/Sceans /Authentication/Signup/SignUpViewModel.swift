@@ -1,26 +1,27 @@
 //
-//  LoginViewModel.swift
+//  SignUpViewModel.swift
 //  sacodinexcerise
 //
-//  Created by psagc on 20/07/24.
+//  Created by psagc on 21/07/24.
 //
 
 import Foundation
 import Combine
 
-protocol LoginViewModelType {
+protocol SignUpViewModelType {
     var email: CurrentValueSubject<String, Never> { get }
     var password: CurrentValueSubject<String, Never> { get }
-    var loginResult: PassthroughSubject<Result<Empty, NetworkRequestError>, Never> { get }
+    var signUpResult: PassthroughSubject<Result<Empty, NetworkRequestError>, Never> { get }
     
-    func login()
+    func signUp()
     func moveToInspections()
+    func moveToLogin()
 }
 
-class LoginViewModel: LoginViewModelType {
+class SignUpViewModel: SignUpViewModelType {
     var email = CurrentValueSubject<String, Never>("")
     var password = CurrentValueSubject<String, Never>("")
-    var loginResult = PassthroughSubject<Result<Empty, NetworkRequestError>, Never>()
+    var signUpResult = PassthroughSubject<Result<Empty, NetworkRequestError>, Never>()
     
     private var cancellables: Set<AnyCancellable> = []
     private let authenticationService: AuthenticationServicesType
@@ -33,22 +34,26 @@ class LoginViewModel: LoginViewModelType {
     
     
     
-    func login() {
-        authenticationService.login(email: email.value, password: password.value)
+    func signUp() {
+        authenticationService.register(email: email.value, password: password.value)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
-                    self?.loginResult.send(.failure(error))
+                    self?.signUpResult.send(.failure(error))
                 }
             }, receiveValue: { [weak self] authResource in
-                self?.loginResult.send(.success(authResource))
+                self?.signUpResult.send(.success(authResource))
             })
             .store(in: &cancellables)
     }
     
     func moveToInspections() {
         navigator.navigate(to: .inspection)
+    }
+    
+    func moveToLogin() {
+        navigator.navigate(to: .login)
     }
 }

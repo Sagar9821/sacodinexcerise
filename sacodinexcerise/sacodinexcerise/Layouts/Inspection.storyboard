@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,8 +24,81 @@
             </objects>
             <point key="canvasLocation" x="18" y="4"/>
         </scene>
+        <!--Inspection List View Controller-->
+        <scene sceneID="bda-43-bq1">
+            <objects>
+                <viewController storyboardIdentifier="InspectionListViewController" id="8Nq-bJ-5TR" customClass="InspectionListViewController" customModule="sacodinexcerise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I3T-uT-vvS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A8X-WK-cAU">
+                                <rect key="frame" x="0.0" y="129" width="393" height="689"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8Nq-bJ-5TR" id="Xjs-aa-KFf"/>
+                                    <outlet property="delegate" destination="8Nq-bJ-5TR" id="yjv-CG-bqc"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4b-3U-aeS">
+                                <rect key="frame" x="0.0" y="59" width="393" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, Sagar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iP-4o-TtA">
+                                        <rect key="frame" x="10" y="5" width="95" height="27"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wishing you an amazing day !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqL-l7-wdF">
+                                        <rect key="frame" x="10" y="37" width="213.33333333333334" height="18.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="oceanBlue"/>
+                                <constraints>
+                                    <constraint firstItem="pqL-l7-wdF" firstAttribute="top" secondItem="6iP-4o-TtA" secondAttribute="bottom" constant="5" id="9Rv-d7-WgG"/>
+                                    <constraint firstItem="6iP-4o-TtA" firstAttribute="leading" secondItem="y4b-3U-aeS" secondAttribute="leading" constant="10" id="PL7-gD-xPa"/>
+                                    <constraint firstItem="6iP-4o-TtA" firstAttribute="top" secondItem="y4b-3U-aeS" secondAttribute="top" constant="5" id="eaa-qO-02x"/>
+                                    <constraint firstAttribute="height" constant="70" id="ed8-sG-l9A"/>
+                                    <constraint firstItem="pqL-l7-wdF" firstAttribute="leading" secondItem="y4b-3U-aeS" secondAttribute="leading" constant="10" id="tZp-3s-l2f"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8r-an-6lw">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="59"/>
+                                <color key="backgroundColor" name="oceanBlue"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x5e-Dq-UVQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="T8r-an-6lw" firstAttribute="top" secondItem="I3T-uT-vvS" secondAttribute="top" id="1Rj-JG-faY"/>
+                            <constraint firstItem="y4b-3U-aeS" firstAttribute="top" secondItem="T8r-an-6lw" secondAttribute="bottom" id="3j6-K7-7d6"/>
+                            <constraint firstAttribute="trailing" secondItem="T8r-an-6lw" secondAttribute="trailing" id="64F-Cd-rjc"/>
+                            <constraint firstItem="y4b-3U-aeS" firstAttribute="top" secondItem="x5e-Dq-UVQ" secondAttribute="top" id="6ak-PV-0Eh"/>
+                            <constraint firstItem="x5e-Dq-UVQ" firstAttribute="trailing" secondItem="A8X-WK-cAU" secondAttribute="trailing" id="D8x-ZS-9We"/>
+                            <constraint firstItem="x5e-Dq-UVQ" firstAttribute="trailing" secondItem="y4b-3U-aeS" secondAttribute="trailing" id="Oyy-DI-aP0"/>
+                            <constraint firstItem="x5e-Dq-UVQ" firstAttribute="bottom" secondItem="A8X-WK-cAU" secondAttribute="bottom" id="TGR-Ot-7ds"/>
+                            <constraint firstItem="y4b-3U-aeS" firstAttribute="leading" secondItem="x5e-Dq-UVQ" secondAttribute="leading" id="WK4-7h-HjF"/>
+                            <constraint firstItem="A8X-WK-cAU" firstAttribute="top" secondItem="y4b-3U-aeS" secondAttribute="bottom" id="WwS-EC-xqg"/>
+                            <constraint firstItem="T8r-an-6lw" firstAttribute="leading" secondItem="I3T-uT-vvS" secondAttribute="leading" id="ehF-dP-Ac1"/>
+                            <constraint firstItem="A8X-WK-cAU" firstAttribute="leading" secondItem="x5e-Dq-UVQ" secondAttribute="leading" id="iG2-6L-gfl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="inspectionListTableView" destination="A8X-WK-cAU" id="7hm-J1-ApI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P08-HL-TSf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="978" y="1"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="oceanBlue">
+            <color red="0.0" green="0.65098039215686276" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
