@@ -50,7 +50,7 @@ class SignUpViewModel: SignUpViewModelType {
     }
     
     func moveToInspections() {
-        navigator.navigate(to: .inspection)
+        navigator.navigate(to: .inspections)
     }
     
     func moveToLogin() {

@@ -49,6 +49,6 @@ class LoginViewModel: LoginViewModelType {
     }
     
     func moveToInspections() {
-        navigator.navigate(to: .inspection)
+        navigator.navigate(to: .inspections)
     }
 }

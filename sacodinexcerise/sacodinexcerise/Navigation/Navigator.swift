@@ -18,7 +18,7 @@ protocol NavigatorType {
     var navigationController: UINavigationController { get }
     
     func startUserFlow(with entrypoint: UserFlowEntryPoint)
-    func navigate(to destination: Destinations)
+    func navigate(to destination: AuthDetinations)
 }
 
 protocol ChildNavigator {
@@ -28,10 +28,14 @@ protocol ChildNavigator {
 }
 
 class Navigator: NavigatorType {
+    
     var childNavigator: [ChildNavigator] = []
     var navigationController: UINavigationController
-    init(navigationController: UINavigationController) {
+    let serviceFactory: ServicesFactory
+    init(navigationController: UINavigationController,serviceFactory: ServicesFactory) {
         self.navigationController = navigationController
+        self.serviceFactory = serviceFactory
+        
     }
     
     func startUserFlow(with entrypoint: UserFlowEntryPoint) {
@@ -45,7 +49,7 @@ class Navigator: NavigatorType {
         case .onboading:
             navigationController.pushViewController(onboardingVc, animated: false)
         case .inspections:
-            let inspectionNavigator: InspectionNavigator = InspectionNavigator(rootNavigator: self)
+            let inspectionNavigator: InspectionNavigator = InspectionNavigator(rootNavigator: self, servicesFactory: serviceFactory)
             childNavigator.append(inspectionNavigator)
             navigationController.viewControllers.append(onboardingVc)
             inspectionNavigator.start()
@@ -53,7 +57,7 @@ class Navigator: NavigatorType {
         }
     }
     
-    func navigate(to destination: Destinations) {
+    func navigate(to destination: AuthDetinations) {
         switch destination {
         case .login:
             let loginVm: LoginViewModel = LoginViewModel(authenticationService: AuthenticationServices(webService: WebService(), persistentData: PersistentData()), navigator: self)
@@ -61,19 +65,20 @@ class Navigator: NavigatorType {
                 return LoginViewController(coder: coder,viewModel: loginVm)
             }
             navigationController.pushViewController(loginVc, animated: true)
-        case .signup:
+        case .signUp:
             let signUpVm: SignUpViewModel = SignUpViewModel(authenticationService: AuthenticationServices(webService: WebService(), persistentData: PersistentData()), navigator: self)
             let loginVc = SAStoryboard.authentication.instantiateViewController(identifier: SignUpViewController.storyboardID) { coder in
                 return SignUpViewController(coder: coder,viewModel: signUpVm)
             }
             navigationController.pushViewController(loginVc, animated: true)
-        case .inspection:
-            let inspectionNavigator: InspectionNavigator = InspectionNavigator(rootNavigator: self)
+        case .inspections:
+            let inspectionNavigator: InspectionNavigator = InspectionNavigator(rootNavigator: self, servicesFactory: serviceFactory)
             childNavigator.append(inspectionNavigator)            
             inspectionNavigator.start()
-        case .inspectionQuestions:
-            break;
+        case .logout:
+            navigationController.popTo(controller: OnboardingViewController.self)
         }
     }
+    
     
 }

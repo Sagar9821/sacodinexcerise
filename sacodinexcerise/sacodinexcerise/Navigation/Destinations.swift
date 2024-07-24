@@ -6,10 +6,18 @@
 //
 
 import Foundation
+enum AuthDetinations {
+    case login
+    case signUp
+    case inspections
+    case logout
+}
 
-public enum Destinations {
+enum Destinations {
     case login
     case signup
     case inspection
-    case inspectionQuestions
+    case newInspection
+    case draftedInspection(InspectionResponse)
+    case logout
 }

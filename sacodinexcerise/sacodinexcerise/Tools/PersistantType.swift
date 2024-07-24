@@ -8,6 +8,7 @@
 import Foundation
 protocol PersistentDataType {
     var userDetails: AuthenticationResource? { get set }
+    func clear()
 }
 
 class PersistentData : PersistentDataType {
@@ -30,6 +31,12 @@ class PersistentData : PersistentDataType {
                 print("[error] get user details \(error.localizedDescription)")
             }
             return nil
+        }
+    }
+    
+    func clear() {
+        for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
+            UserDefaults.standard.removeObject(forKey: key)
         }
     }
 }

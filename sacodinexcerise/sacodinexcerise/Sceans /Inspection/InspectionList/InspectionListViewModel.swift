@@ -8,47 +8,72 @@
 import Foundation
 import Combine
 
-protocol InspectionListViewModelType {
-    var inspectionListResult: PassthroughSubject<Inspection, NetworkRequestError> { get }
-    func loadInspections()
+enum InspectionSelectedSegement: Int {
+    case drafted = 0
+    case completed = 1
+}
 
-    func numberOfInspections() -> Int
-    func inspectionAt( _ index: Int) -> Inspection
+protocol InspectionListViewModelType {
+    var inspectionListType: CurrentValueSubject<InspectionSelectedSegement, Never> { get }
     
-    func moveToInspectionDetails()
+    var inspectionListResult: PassthroughSubject<[StoreInspection], NetworkRequestError> { get }
+    func loadInspections(type: InspectionSelectedSegement)
+    
+    func numberOfInspections() -> Int
+    func inspectionAt( _ index: Int) -> StoreInspection
+    
+    func moveToInspectionDetails(index: Int)
+    func moveToNewInspection()
+    
+    func logout()
 }
 
 class InspectionListViewModel: InspectionListViewModelType {
+    var inspectionListType: CurrentValueSubject<InspectionSelectedSegement, Never>
     
     
-    var arrayInspections: [Inspection] = []
+    
+    var arrayInspections: [StoreInspection] = []
     
     
-    var inspectionListResult = PassthroughSubject<Inspection, NetworkRequestError>()
+    var inspectionListResult = PassthroughSubject<[StoreInspection], NetworkRequestError>()
     
     private var cancellables: Set<AnyCancellable> = []
-    private var inspectionService: InspectionServiceType
+    private var databaseServices: DatabaseServicesType
     private var navigator: ChildNavigator
-    init(inspectionService: InspectionServiceType, navigator: ChildNavigator) {
-        self.inspectionService = inspectionService
+    init(inspectionListType: InspectionSelectedSegement,
+         databaseServices: DatabaseServicesType,
+         navigator: ChildNavigator) {
+        self.inspectionListType = CurrentValueSubject<InspectionSelectedSegement, Never>(InspectionSelectedSegement.drafted)
+        self.databaseServices = databaseServices
         self.navigator = navigator
+        setupBinding()
     }
     
-    func loadInspections() {
-        inspectionService.start().sink { [weak self] complition in
-            switch complition {
-            case .finished:
-                print("Inspection Received")
-            case .failure(let error):
-                self?.inspectionListResult.send(completion: .failure(error))
-
+    func setupBinding() {
+        self.inspectionListType.sink { _ in } receiveValue: { [weak self] selectedListType in
+            switch selectedListType {
+            case .completed:
+                self?.loadInspections(type: .completed)
+            case .drafted:
+                self?.loadInspections(type: .drafted)
             }
-        } receiveValue: { [weak self] inspectionData in            
-            self?.arrayInspections.removeAll()
-            self?.arrayInspections.append(inspectionData.inspection)
-            self?.inspectionListResult.send(inspectionData.inspection)
         }.store(in: &cancellables)
-
+        
+    }
+    
+    func loadInspections(type: InspectionSelectedSegement) {
+        self.arrayInspections.removeAll()
+        switch type {
+        case .drafted:
+            let draftedInspections = databaseServices.getDraftedInspection()
+            self.arrayInspections.append(contentsOf: draftedInspections)
+            self.inspectionListResult.send(draftedInspections)
+        case .completed:
+            let completedInspection = databaseServices.getCompletedInspection()
+            self.arrayInspections.append(contentsOf: completedInspection)
+            self.inspectionListResult.send(completedInspection)
+        }
     }
 }
 extension InspectionListViewModel {
@@ -56,13 +81,28 @@ extension InspectionListViewModel {
         return arrayInspections.count
     }
     
-    func inspectionAt( _ index: Int) -> Inspection {
+    func inspectionAt( _ index: Int) -> StoreInspection {
         return arrayInspections[index]
     }
 }
 
 extension InspectionListViewModel {
-    func moveToInspectionDetails() {
-        navigator.navigate(to: .inspectionQuestions)
+    func moveToInspectionDetails(index: Int) {
+        do {
+            let inspectionDetails = try JSONDecoder().decode(Inspection.self, from: arrayInspections[index].data)
+            navigator.navigate(to: .draftedInspection(InspectionResponse(inspection: inspectionDetails)))
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    func moveToNewInspection() {
+        navigator.navigate(to: .newInspection)
+    }
+    
+    func logout() {
+        navigator.navigate(to: .logout)
     }
 }

@@ -29,7 +29,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4b-3U-aeS">
                                 <rect key="frame" x="0.0" y="59" width="393" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, Sagar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iP-4o-TtA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iP-4o-TtA">
                                         <rect key="frame" x="10" y="5" width="95" height="27"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,11 +41,26 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFF-Pr-akM">
+                                        <rect key="frame" x="343" y="20" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="UOm-Po-gg6"/>
+                                            <constraint firstAttribute="height" constant="40" id="ZMW-fi-ahy"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="power" catalog="system"/>
+                                        <connections>
+                                            <action selector="didTapOnLogout" destination="8Nq-bJ-5TR" eventType="touchUpInside" id="bDP-ZY-Mih"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="oceanBlue"/>
                                 <constraints>
                                     <constraint firstItem="pqL-l7-wdF" firstAttribute="top" secondItem="6iP-4o-TtA" secondAttribute="bottom" constant="5" id="9Rv-d7-WgG"/>
+                                    <constraint firstAttribute="trailing" secondItem="rFF-Pr-akM" secondAttribute="trailing" constant="10" id="BYC-45-Dsf"/>
                                     <constraint firstItem="6iP-4o-TtA" firstAttribute="leading" secondItem="y4b-3U-aeS" secondAttribute="leading" constant="10" id="PL7-gD-xPa"/>
+                                    <constraint firstAttribute="bottom" secondItem="rFF-Pr-akM" secondAttribute="bottom" constant="10" id="TYb-4Q-UXv"/>
                                     <constraint firstItem="6iP-4o-TtA" firstAttribute="top" secondItem="y4b-3U-aeS" secondAttribute="top" constant="5" id="eaa-qO-02x"/>
                                     <constraint firstAttribute="height" constant="70" id="ed8-sG-l9A"/>
                                     <constraint firstItem="pqL-l7-wdF" firstAttribute="leading" secondItem="y4b-3U-aeS" secondAttribute="leading" constant="10" id="tZp-3s-l2f"/>
@@ -78,6 +93,9 @@
                                     <segment title="Drafted"/>
                                     <segment title="Completed"/>
                                 </segments>
+                                <connections>
+                                    <action selector="didChangeInspectionTypesSegmenteWithSender:" destination="8Nq-bJ-5TR" eventType="valueChanged" id="2QH-b3-BgI"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x5e-Dq-UVQ"/>
@@ -103,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="inspectionListTableView" destination="A8X-WK-cAU" id="7hm-J1-ApI"/>
+                        <outlet property="inspectionListTypeSegement" destination="zdf-k3-hmg" id="B8n-Pb-9wN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P08-HL-TSf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -112,6 +131,7 @@
     </scenes>
     <resources>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="power" catalog="system" width="127" height="128"/>
         <namedColor name="oceanBlue">
             <color red="0.0" green="0.65098039215686276" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

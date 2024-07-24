@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let navController = UINavigationController()
-        navigator = Navigator(navigationController: navController)
+        navigator = Navigator(navigationController: navController,serviceFactory: AppEnvironment.makeService())
         navigator?.startUserFlow(with: AppEnvironment.appFlow)
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navController

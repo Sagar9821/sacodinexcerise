@@ -24,6 +24,6 @@ class OnBoardingViewModel: OnboardingViewModelType {
     }
     
     func moveToRegister() {
-        navigator.navigate(to: .signup)
+        navigator.navigate(to: .signUp)
     }
 }

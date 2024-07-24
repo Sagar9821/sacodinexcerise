@@ -19,6 +19,7 @@ struct InspectionQuestionsDetailsView: View {
     
     var body: some View {
         content
+            .alertInfo($viewModel.alert)
     }
     
     private var content: some View {
@@ -77,7 +78,9 @@ struct InspectionQuestionsDetailsView: View {
             }
             Button("Submit") {
                 viewModel.submitAnswer()
-            }.buttonStyle(.bordered)
+            }
+            .buttonStyle(AppButtonStyle())
+            .padding([.leading,.trailing,.bottom],20)
         }
         
     }

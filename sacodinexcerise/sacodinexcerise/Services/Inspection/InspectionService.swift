@@ -11,6 +11,7 @@ import Combine
 protocol InspectionServiceType {
     
     func start() -> AnyPublisher<InspectionResponse,NetworkRequestError>
+    func submit(inspection: InspectionResponse) -> AnyPublisher<Empty,NetworkRequestError>
 }
 
 class InspectionService: InspectionServiceType {
@@ -24,7 +25,9 @@ class InspectionService: InspectionServiceType {
         webservice.dispatch(InspectionResponse.self, router: .startInpection)
     }
     
-    
+    func submit(inspection: InspectionResponse) -> AnyPublisher<Empty, NetworkRequestError> {
+        webservice.dispatch(Empty.self, router: .submitInspection(inspection))
+    }
 }
 
 

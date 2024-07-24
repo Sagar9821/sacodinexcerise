@@ -11,6 +11,7 @@ import Combine
 class InspectionListViewController: UIViewController {
 
     @IBOutlet private var inspectionListTableView: UITableView!
+    @IBOutlet private var inspectionListTypeSegement: UISegmentedControl!
     
     private var cancellable: Set<AnyCancellable> = []
     private let viewModel: InspectionListViewModelType
@@ -32,6 +33,7 @@ class InspectionListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUIElements()
+        viewModel.loadInspections(type: viewModel.inspectionListType.value)
     }
     func setupUIElements() {
         navigationController?.isNavigationBarHidden = true
@@ -45,14 +47,25 @@ class InspectionListViewController: UIViewController {
         } receiveValue: { [weak self] inspection in
             self?.inspectionListTableView.reloadData()
         }.store(in: &cancellable)
-        //viewModel.loadInspections()
+
+
+        
     }
    
     // MARK: - Action Methods
     @IBAction private func didTapOnNewInspection() {
-        viewModel.moveToInspectionDetails()
+        viewModel.moveToNewInspection()
     }
 
+    @IBAction private func didChangeInspectionTypesSegmente(sender: UISegmentedControl) {
+        if let segment = InspectionSelectedSegement(rawValue: sender.selectedSegmentIndex) {
+            self.viewModel.inspectionListType.send(segment)
+        }
+    }
+    
+    @IBAction private func didTapOnLogout() {
+        viewModel.logout()
+    }
 }
 // MARK: - Table View Datasource & Delegates
 extension InspectionListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -60,8 +73,21 @@ extension InspectionListViewController: UITableViewDataSource, UITableViewDelega
         return viewModel.numberOfInspections()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.getCell(UpcomingInspectionCell.self) else { return UITableViewCell() }
-        cell.inspectionDetails = viewModel.inspectionAt(indexPath.row)
-        return cell
+        guard let selectedSegment = InspectionSelectedSegement(rawValue: inspectionListTypeSegement.selectedSegmentIndex) else {
+            return UITableViewCell()
+        }
+        switch selectedSegment {
+        case .drafted:
+            guard let cell = tableView.getCell(DraftedInspectionCell.self) else { return UITableViewCell() }
+            cell.inspectionCompletedDetails = viewModel.inspectionAt(indexPath.row)
+            return cell
+        case .completed:
+            guard let cell = tableView.getCell(CompletedInspectionCell.self) else { return UITableViewCell() }
+            cell.inspectionCompletedDetails = viewModel.inspectionAt(indexPath.row)
+            return cell
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.moveToInspectionDetails(index: indexPath.row)
     }
 }

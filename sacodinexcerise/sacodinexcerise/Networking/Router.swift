@@ -17,6 +17,7 @@ enum Router: RouterType {
     case login(AuthenticationResource)
     case register(AuthenticationResource)
     case startInpection
+    case submitInspection(InspectionResponse)
 }
 
 extension Router {
@@ -28,6 +29,8 @@ extension Router {
             return "http://127.0.0.1:5001/api/register"
         case .startInpection:
             return "http://127.0.0.1:5001/api/inspections/start"
+        case .submitInspection:
+            return "http://127.0.0.1:5001/api/inspections/submit"
         }
     }
 }
@@ -35,7 +38,7 @@ extension Router {
 extension Router {
     var method: HTTPMethod {
         switch self {
-        case .login,.register:
+        case .login,.register,.submitInspection:
             return .post
         case .startInpection:
             return .get
@@ -48,6 +51,8 @@ extension Router {
         switch self {
         case .login(let authenticationResource),.register(let authenticationResource):
             return getParameters(authenticationResource)
+        case .submitInspection(let inspectionDetail):
+            return getParameters(inspectionDetail)
         case .startInpection:
             return nil
         }

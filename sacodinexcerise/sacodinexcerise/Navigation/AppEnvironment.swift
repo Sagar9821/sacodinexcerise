@@ -28,4 +28,8 @@ struct AppEnvironment {
             return .unauthorised}
         return .authorised
     }
+    
+    static func makeService() -> ServicesFactory {
+        return .init(webService: WebService())
+    }
 }
