@@ -257,6 +257,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="didTapOnRegister" destination="eSv-74-MiP" eventType="touchUpInside" id="gog-iq-Cdj"/>
+                                                    <action selector="didTapOnSignUp" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Rsu-7C-M8t"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -371,72 +372,36 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRz-ma-plc">
-                                <rect key="frame" x="0.0" y="533" width="375" height="104"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRl-xX-kyp">
-                                        <rect key="frame" x="40" y="0.0" width="295" height="50"/>
-                                        <color key="backgroundColor" name="buttonColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Rhu-He-tAj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Sign Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="didTapOnSignUp" destination="Swj-2u-1DJ" eventType="touchUpInside" id="FTg-Xl-TCY"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CLQ-bP-0nF">
-                                        <rect key="frame" x="65" y="60" width="245" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOx-MD-V55">
-                                                <rect key="frame" x="0.0" y="0.0" width="195" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnp-Qy-FGs">
-                                                <rect key="frame" x="199" y="0.0" width="46" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Login">
-                                                    <color key="titleColor" name="buttonColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="didTapOnLogin" destination="Swj-2u-1DJ" eventType="touchUpInside" id="YW6-FP-0UU"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRl-xX-kyp">
+                                <rect key="frame" x="40" y="587" width="295" height="50"/>
+                                <color key="backgroundColor" name="buttonColor"/>
                                 <constraints>
-                                    <constraint firstItem="CLQ-bP-0nF" firstAttribute="top" secondItem="dRl-xX-kyp" secondAttribute="bottom" constant="10" id="5Cx-UZ-gle"/>
-                                    <constraint firstItem="dRl-xX-kyp" firstAttribute="top" secondItem="zRz-ma-plc" secondAttribute="top" id="eUQ-Te-MAf"/>
-                                    <constraint firstItem="dRl-xX-kyp" firstAttribute="leading" secondItem="zRz-ma-plc" secondAttribute="leading" constant="40" id="ict-Ia-GOZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="dRl-xX-kyp" secondAttribute="trailing" constant="40" id="kN0-Xh-lc5"/>
-                                    <constraint firstAttribute="bottom" secondItem="CLQ-bP-0nF" secondAttribute="bottom" constant="10" id="r0p-C6-0bG"/>
-                                    <constraint firstItem="CLQ-bP-0nF" firstAttribute="centerX" secondItem="zRz-ma-plc" secondAttribute="centerX" id="t37-Hm-A7G"/>
+                                    <constraint firstAttribute="height" constant="50" id="Rhu-He-tAj"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapOnSignUp" destination="Swj-2u-1DJ" eventType="touchUpInside" id="FTg-Xl-TCY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U71-a1-YSE"/>
                         <color key="backgroundColor" name="viewBackground"/>
                         <constraints>
                             <constraint firstItem="kDh-Mw-t0e" firstAttribute="top" secondItem="U71-a1-YSE" secondAttribute="top" constant="20" id="1eW-Gw-wUG"/>
-                            <constraint firstAttribute="trailing" secondItem="zRz-ma-plc" secondAttribute="trailing" id="8xB-1R-Xml"/>
-                            <constraint firstItem="zRz-ma-plc" firstAttribute="leading" secondItem="U71-a1-YSE" secondAttribute="leading" id="Iv8-ZO-MWK"/>
                             <constraint firstItem="U71-a1-YSE" firstAttribute="trailing" secondItem="kDh-Mw-t0e" secondAttribute="trailing" constant="20" id="U2S-R3-UUT"/>
-                            <constraint firstItem="U71-a1-YSE" firstAttribute="bottom" secondItem="zRz-ma-plc" secondAttribute="bottom" constant="30" id="mKL-Fw-1lU"/>
+                            <constraint firstAttribute="trailing" secondItem="dRl-xX-kyp" secondAttribute="trailing" constant="40" id="VUy-Me-SSu"/>
+                            <constraint firstItem="U71-a1-YSE" firstAttribute="bottom" secondItem="dRl-xX-kyp" secondAttribute="bottom" constant="30" id="eAK-Vh-9He"/>
                             <constraint firstItem="kDh-Mw-t0e" firstAttribute="leading" secondItem="U71-a1-YSE" secondAttribute="leading" constant="20" id="u59-aK-ib6"/>
+                            <constraint firstItem="dRl-xX-kyp" firstAttribute="leading" secondItem="gEb-XZ-UMy" secondAttribute="leading" constant="40" id="xoi-V2-GUF"/>
                         </constraints>
                     </view>
                     <connections>

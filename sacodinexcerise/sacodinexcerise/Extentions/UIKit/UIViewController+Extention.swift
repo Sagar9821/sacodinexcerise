@@ -19,6 +19,9 @@ extension UIViewController {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.configureWithOpaqueBackground()
+        appearance.backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
         appearance.shadowColor = .clear
         appearance.backgroundColor = .white
         let attributes: [NSAttributedString.Key: Any] = [
@@ -29,7 +32,6 @@ extension UIViewController {
         
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
         self.title = title
     }
     
@@ -38,6 +40,18 @@ extension UIViewController {
             let alertError: UIAlertController = UIAlertController(title: "Error", message: error.errorMessage ?? "Please try sometime.", preferredStyle: .alert)
             alertError.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alertError, animated: true)
+        }
+    }
+    
+    func showLoader() {
+        DispatchQueue.dispatchToMain {
+            SwiftLoader.show(animated: true)
+        }
+    }
+    
+    func hideLoader() {
+        DispatchQueue.dispatchToMain {
+            SwiftLoader.hide()
         }
     }
 }

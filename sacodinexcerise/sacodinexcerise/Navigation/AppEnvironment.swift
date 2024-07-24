@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum AuthStatus {
     case unauthorised
@@ -31,5 +32,23 @@ struct AppEnvironment {
     
     static func makeService() -> ServicesFactory {
         return .init(webService: WebService())
+    }
+    
+    static func configure() {
+        AppEnvironment.configureSwiftLoader()
+    }
+    
+    
+    fileprivate static func configureSwiftLoader() {
+        var config : SwiftLoader.Config = SwiftLoader.Config()
+            config.size = 170
+            config.backgroundColor = UIColor(red:0.03, green:0.82, blue:0.7, alpha:1)
+            config.spinnerColor = .white
+            config.titleTextColor = .white
+            config.spinnerLineWidth = 2.0
+            config.foregroundColor = UIColor.black
+            config.foregroundAlpha = 0.5
+            
+            SwiftLoader.setConfig(config)
     }
 }

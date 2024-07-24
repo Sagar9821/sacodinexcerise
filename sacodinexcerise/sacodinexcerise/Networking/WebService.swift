@@ -40,7 +40,7 @@ struct WebService: WebServiceType {
                 
                 print("[\(response.statusCode)] '\(request.url!)'")
                 
-                if response.statusCode == 401 {
+                if response.statusCode == 401 || response.statusCode == 409 {
                     // Decode error model for status code 400
                     let decoder = JSONDecoder()
                     let errorModel = try decoder.decode(WebResponseError.self, from: data)

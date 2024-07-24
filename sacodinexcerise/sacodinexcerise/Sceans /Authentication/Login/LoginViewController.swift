@@ -38,7 +38,6 @@ class LoginViewController: UIViewController {
     
     private func setupUIElement() {
         navigationBar(title: "Log in")
-        navigationItem.hidesBackButton = true
     }
     
     private func setupBindings() {
@@ -59,6 +58,7 @@ class LoginViewController: UIViewController {
         // Observe login result
         viewModel.loginResult
             .sink { [weak self] result in
+                self?.hideLoader()
                 switch result {
                 case .success:
                     self?.viewModel.moveToInspections()
@@ -73,5 +73,10 @@ class LoginViewController: UIViewController {
     // MARK: - Action Methods
     @IBAction private func didTapOnLogin() {
         viewModel.login()
+        showLoader()
+    }
+    
+    @IBAction private func didTapOnSignUp() {
+        viewModel.moveToSignUp()
     }
 }

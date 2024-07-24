@@ -15,6 +15,7 @@ protocol LoginViewModelType {
     
     func login()
     func moveToInspections()
+    func moveToSignUp()
 }
 
 class LoginViewModel: LoginViewModelType {
@@ -50,5 +51,9 @@ class LoginViewModel: LoginViewModelType {
     
     func moveToInspections() {
         navigator.navigate(to: .inspections)
+    }
+    
+    func moveToSignUp() {
+        navigator.navigate(to: .signUp)
     }
 }

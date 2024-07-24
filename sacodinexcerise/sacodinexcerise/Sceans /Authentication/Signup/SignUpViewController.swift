@@ -29,6 +29,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,8 +37,7 @@ class SignUpViewController: UIViewController {
         setupUIElement()
     }
     private func setupUIElement() {
-        navigationBar(title: "Register")
-        navigationItem.hidesBackButton = false
+        navigationBar(title: "Register")        
     }
     
     private func setupBindings() {
@@ -58,11 +58,12 @@ class SignUpViewController: UIViewController {
         // Observe login result
         viewModel.signUpResult
             .sink { [weak self] result in
+                self?.hideLoader()
                 switch result {
                 case .success:
                     self?.viewModel.moveToInspections()
                 case .failure(let error):
-                    print("Login failed with error: \(error)")
+                    self?.showNetworkError(error)
                 }
             }
             .store(in: &cancellables)
@@ -70,10 +71,6 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - Action Methods
-    @IBAction private func didTapOnSignUp() {
-        viewModel.signUp()
-    }
-    
     @IBAction private func didTapOnLogin() {
         viewModel.moveToLogin()
     }

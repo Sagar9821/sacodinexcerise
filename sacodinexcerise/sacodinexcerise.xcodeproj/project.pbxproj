@@ -29,6 +29,7 @@
 		6E2B83B92C50E2FE00CF2926 /* UINavigationController+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B83B82C50E2FE00CF2926 /* UINavigationController+Extentions.swift */; };
 		6E2B83BE2C50E55300CF2926 /* ServicesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B83BD2C50E55300CF2926 /* ServicesFactory.swift */; };
 		6E2B83C02C50E84800CF2926 /* AppButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B83BF2C50E84800CF2926 /* AppButtonStyle.swift */; };
+		6E2B83C22C50EB5E00CF2926 /* SwiftLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B83C12C50EB5E00CF2926 /* SwiftLoader.swift */; };
 		6E44B9162C4B888300EE4F5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E44B9152C4B888300EE4F5D /* AppDelegate.swift */; };
 		6E44B9182C4B888300EE4F5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E44B9172C4B888300EE4F5D /* SceneDelegate.swift */; };
 		6E44B9202C4B888300EE4F5D /* sacodinexcerise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E44B91E2C4B888300EE4F5D /* sacodinexcerise.xcdatamodeld */; };
@@ -108,6 +109,7 @@
 		6E2B83B82C50E2FE00CF2926 /* UINavigationController+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extentions.swift"; sourceTree = "<group>"; };
 		6E2B83BD2C50E55300CF2926 /* ServicesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesFactory.swift; sourceTree = "<group>"; };
 		6E2B83BF2C50E84800CF2926 /* AppButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtonStyle.swift; sourceTree = "<group>"; };
+		6E2B83C12C50EB5E00CF2926 /* SwiftLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLoader.swift; sourceTree = "<group>"; };
 		6E44B9122C4B888300EE4F5D /* sacodinexcerise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sacodinexcerise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E44B9152C4B888300EE4F5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E44B9172C4B888300EE4F5D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				6E2B83942C50186600CF2926 /* Loadable.swift */,
 				6E2B83962C50188500CF2926 /* CancelBag.swift */,
 				6E2B83982C5019B800CF2926 /* ActivityIndicator.swift */,
+				6E2B83C12C50EB5E00CF2926 /* SwiftLoader.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				6E2B83AE2C50AEB900CF2926 /* CompletedInspectionCell.swift in Sources */,
 				6E44B9842C4C0DF400EE4F5D /* PersistantType.swift in Sources */,
 				6E44B9652C4B8C3300EE4F5D /* SAStoryboard.swift in Sources */,
+				6E2B83C22C50EB5E00CF2926 /* SwiftLoader.swift in Sources */,
 				6E44B9162C4B888300EE4F5D /* AppDelegate.swift in Sources */,
 				6E2B83972C50188500CF2926 /* CancelBag.swift in Sources */,
 				6E5EDAD52C4CDFD20090B5FC /* Inspection.swift in Sources */,

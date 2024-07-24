@@ -7,38 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B7154F72-304B-439A-94E9-CC74E58F4947"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sacodinexcerise/Networking/WebService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "dispatch(_:router:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EF805039-DA92-4525-AC5D-9FB3265F848A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sacodinexcerise/Networking/WebService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "dispatch(_:router:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "55391EA3-53F3-4D79-B278-F298ABCCFCE7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -49,22 +17,6 @@
             startingLineNumber = "175"
             endingLineNumber = "175"
             landmarkName = "handleDecodingError(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "483206C7-41F6-4449-88A0-979F6611CF69"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "sacodinexcerise/Networking/WebService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "handleError(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -82,6 +34,38 @@
             endingLineNumber = "38"
             landmarkName = "saveInspection(inspection:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9AE06F86-5CB2-4FB1-838A-598AEC639A6F - d29f8cbd417452dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sacodinexcerise.DatabaseServices.saveInspection(inspection: sacodinexcerise.Inspection) -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Services/Database/DatabaseServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "2256">
+               </Location>
+               <Location
+                  uuid = "9AE06F86-5CB2-4FB1-838A-598AEC639A6F - d29f8cbd4174513e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sacodinexcerise.DatabaseServices.saveInspection(inspection: sacodinexcerise.Inspection) -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Services/Database/DatabaseServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "2256">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -98,6 +82,38 @@
             endingLineNumber = "34"
             landmarkName = "saveInspection(inspection:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2C431744-346F-4AC5-AC04-1F6C6D62E1D5 - d29f8cbd417452b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sacodinexcerise.DatabaseServices.saveInspection(inspection: sacodinexcerise.Inspection) -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Services/Database/DatabaseServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "904">
+               </Location>
+               <Location
+                  uuid = "2C431744-346F-4AC5-AC04-1F6C6D62E1D5 - d29f8cbd41745293"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sacodinexcerise.DatabaseServices.saveInspection(inspection: sacodinexcerise.Inspection) -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Services/Database/DatabaseServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "904">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -114,6 +130,38 @@
             endingLineNumber = "33"
             landmarkName = "saveInspection(inspection:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D9C7DDF8-1781-4A55-ACD6-ABE8209063C0 - d29f8cbd417452b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sacodinexcerise.DatabaseServices.saveInspection(inspection: sacodinexcerise.Inspection) -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Services/Database/DatabaseServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "904">
+               </Location>
+               <Location
+                  uuid = "D9C7DDF8-1781-4A55-ACD6-ABE8209063C0 - d29f8cbd41745293"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "sacodinexcerise.DatabaseServices.saveInspection(inspection: sacodinexcerise.Inspection) -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Services/Database/DatabaseServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "904">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -145,6 +193,70 @@
             startingLineNumber = "106"
             endingLineNumber = "106"
             landmarkName = "submitAnswer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BF8F3DD6-01BD-4BA2-A0AC-0DD4EF3A3667 - 7caad762b7184ab9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in sacodinexcerise.InspectioQuestionDetailsViewModel.submitAnswer() -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Sceans%20/Inspection/InspectionQuestionsDetails/InspectioQuestionDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "BF8F3DD6-01BD-4BA2-A0AC-0DD4EF3A3667 - 7caad762b7184ab9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in sacodinexcerise.InspectioQuestionDetailsViewModel.submitAnswer() -&gt; ()"
+                  moduleName = "sacodinexcerise"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/psagc/sacodinexcerise/sacodinexcerise/sacodinexcerise/Sceans%20/Inspection/InspectionQuestionsDetails/InspectioQuestionDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB192D6C-56AA-4543-9182-9F475EFF7A37"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sacodinexcerise/Sceans /Authentication/Signup/SignUpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "signUp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BB9E802-64D5-4694-9FF9-5FAA854B24E9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sacodinexcerise/Sceans /Authentication/Signup/SignUpViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "signUp()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
